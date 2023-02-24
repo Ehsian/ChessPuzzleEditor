@@ -1,19 +1,31 @@
 package ui;
 
-import model.*;
+import java.util.Scanner;
 
-import java.util.Arrays;
-
+// Starts up puzzle, determines whether to use existing or make new puzzle.
 public class Main {
+
+    // EFFECTS: Handles startup user input
     public static void main(String[] args) {
-        Board testboard = new Board();
-        testboard.addPiece('P','a',3);
-        System.out.println(testboard);
-        Pawn testpawn = new Pawn();
-        System.out.println(testpawn);
-        Piece[] test = new Piece[2];
-        test[0] = testpawn;
-        test[1] = new King();
-        System.out.println(Arrays.toString(test));
+        Scanner scan = new Scanner(System.in);
+
+        int input = -1; // TODO: Exception for when not an integer
+
+        while (input != 0) {
+            displayMenu();
+            input = scan.nextInt();
+            switch (input) {
+                case 1 -> new Puzzle();
+                //case 2 -> System.out.println("WIP");
+            }
+        }
+    }
+
+    // EFFECTS: Displays the user's possible input options
+    private static void displayMenu() {
+        System.out.println("\nInput Command:");
+        System.out.println("\t0) Exit");
+        System.out.println("\t1) New Puzzle");
+        System.out.println("\t2) Load Puzzle (WIP)");
     }
 }

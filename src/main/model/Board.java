@@ -1,7 +1,7 @@
 package model;
-
 import java.util.Arrays;
 
+// Representation of a chess board as a 8x8 2D array of Pieces with board-manipulating functions.
 public class Board {
     private Piece[][] board;
 
@@ -16,9 +16,14 @@ public class Board {
     }
 
     // MODIFIES: this
-    // EFFECTS: Sets current board's piece map to input board's piece map.
+    // EFFECTS: Sets current board's piece map to input board's piece map. (Deep copy, not reference)
     public Board(Board board) {
-        this.board = board.getBoard();
+        this.board = new Piece[8][8];
+        for (int i = 0;i < 8;i++) {
+            for (int j = 0; j < 8;j++) {
+                this.board[i][j] = board.getBoard()[i][j];
+            }
+        }
     }
 
     // EFFECTS: Returns this board as its array of pieces. (piece map)
@@ -31,15 +36,21 @@ public class Board {
     //           y is valid board y-coordinate (1-8)
     // MODIFIES: this
     // EFFECTS: Sets the piece at the input coordinates to input piece.
-    public void addPiece(char piece, char x, int y) {
-        board[Math.abs(7 - (y - 1))][charToX(x)] = charToPiece(piece);
+    public void setPiece(char piece, char x, int y) {
+        board[getY(y)][getX(x)] = charToPiece(piece);
     }
 
     // REQUIRES: Piece exists at (x1,y1) & it is valid for piece at (x1,y1) to move to (x2,y2)
     // MODIFIES: this
-    // EFFECTS: Moves piece at (x1,y1) to (x2,y2). Replaces and returns existing piece on (x2,y2).
-    public Piece movePiece(char x1, int y1, char x2, int y2) {
+    // EFFECTS: Moves piece at (x1,y1) to (x2,y2). Replaces existing piece on (x2,y2). Returns resulting board.
+    public Board movePiece(char x1, int y1, char x2, int y2) {
+        Piece from = board[getY(y1)][getX(x1)];
+        // Piece to = board[getY(y2)][getX(x2)]; // Piece that gets "taken"
 
+        board[getY(y1)][getX(x1)] = new Piece();
+        board[getY(y2)][getX(x2)] = from;
+
+        return this;
     }
 
     // EFFECTS: Returns a string that represents the board as text. (with coordinates)
@@ -53,20 +64,45 @@ public class Board {
         return str.toString();
     }
 
+    // EFFECTS: Returns a boolean, whether this board is empty.
+    public boolean isEmpty() {
+        for (Piece[] row : board){
+            for (Piece piece : row){
+                if (!piece.isEmpty()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // EFFECTS: Returns whether this board is equal to b.
+    public boolean equals(Board b) {
+        for (int i = 0;i < 8;i++){
+            for (int j = 0;j < 8;j++){
+                if (!this.board[i][j].toString().equals(b.board[i][j].toString())) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     // REQUIRES: piece represents valid piece's character
     // EFFECTS: Returns Piece object representation of character
     private Piece charToPiece(char piece) {
         switch (piece) {
-            case 'P':
-                return new Pawn();
-            case 'K':
-                return new King();
+            case 'P','p','R','r','N','n','B','b','Q','q','K','k':
+                //return new Pawn();
+                return new Piece(String.valueOf(piece));
             default:
                 return new Piece(); //replace with error handling in future
         }
     }
 
-    private int charToX(char x) {
+    // REQUIRES: x is a valid chess board x-coordinate (a-h)
+    // EFFECTS: Returns an indexed interpretation of the chess board x-coordinate
+    private int getX(char x) {
         switch (x) {
             case 'a': return 0;
             case 'b': return 1;
@@ -78,5 +114,11 @@ public class Board {
             case 'h': return 7;
             default: return -1; //switch with error handling in future
         }
+    }
+
+    // REQUIRES: y is a valid chess board y-coordinate (1-8)
+    // EFFECTS: Returns an indexed interpretation of the chess board y-coordinate
+    private int getY(int y) {
+        return Math.abs(7 - (y - 1));
     }
 }
