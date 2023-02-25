@@ -1,4 +1,5 @@
 package ui;
+
 import model.Board;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Puzzle {
     ArrayList<Board> puzzle;
     private final Scanner input = new Scanner(System.in);
 
-    public Puzzle(){
+    public Puzzle() {
         System.out.println("Entering first-board setup...\n");
         setupBoard();
         runPuzzle();
@@ -43,7 +44,7 @@ public class Puzzle {
         while (command != 0) {
             displayMenuA();
             command = input.nextInt();
-            switch (command){
+            switch (command) {
                 case 1: runEditPuzzle();
                 case 2: runPlayPuzzle();
                 case 3: runShowPuzzle();
@@ -57,10 +58,10 @@ public class Puzzle {
     public void runEditPuzzle() { // Uses MenuB
         int command = -1;
         while (command != 0) {
-            printBoard(puzzle.size()-1);
+            printBoard(puzzle.size() - 1);
             displayMenuB();
             command = input.nextInt();
-            switch (command){
+            switch (command) {
                 case 1: addMove(puzzle);
                 case 2: {
                     if (puzzle.size() == 1) {
@@ -68,7 +69,7 @@ public class Puzzle {
                         System.out.println("If you wish to remake the starting board please reset the puzzle.");
                         continue;
                     }
-                    puzzle.remove(puzzle.size()-1);
+                    puzzle.remove(puzzle.size() - 1);
                 }
                 case 3: setupBoard();
             }
@@ -87,7 +88,7 @@ public class Puzzle {
         int y1 = Integer.parseInt(startCoord.substring(1,2));
         char x2 = endCoord.charAt(0);
         int y2 = Integer.parseInt(endCoord.substring(1,2));
-        boards.add(new Board(boards.get(boards.size()-1)).movePiece(x1,y1,x2,y2));
+        boards.add(new Board(boards.get(boards.size() - 1)).movePiece(x1,y1,x2,y2));
     }
 
     // REQUIRES: puzzle.size() > 1
@@ -102,17 +103,18 @@ public class Puzzle {
             printBoard(0);
             displayMenuC();
             command = input.nextInt();
-            switch (command){
+            switch (command) {
                 case 1: { // Move piece
                     addMove(play);
                     if (play.get(step).equals(puzzle.get(step))) {
                         step++;
                     } else {
                         System.out.println("Incorrect! ");
-                        play.remove(play.size()-1);
-                    } if (step >= puzzle.size()) {
+                        play.remove(play.size() - 1);
+                    }
+                    if (step >= puzzle.size()) {
                         command = 0;
-                        printBoard(step-1);
+                        printBoard(step - 1);
                         System.out.println("You have correctly solved this puzzle! Press enter to continue.");
                         input.nextLine();
                     }
@@ -194,7 +196,7 @@ public class Puzzle {
     }
 
     //EFFECTS: displays menu of options to user in setupBoard()
-    private void displaySetupMenu(){
+    private void displaySetupMenu() {
         System.out.println("\nEnter a letter representing a piece followed by the coordinate.");
         System.out.println("For white pieces, capitalize the letter. For black pieces, keep the letter lowercase.");
         System.out.println("To set a square to be empty, enter a space followed by the coordinate");

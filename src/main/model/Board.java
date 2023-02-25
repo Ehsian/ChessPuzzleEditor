@@ -1,4 +1,5 @@
 package model;
+
 import java.util.Arrays;
 
 // Representation of a chess board as a 8x8 2D array of Pieces with board-manipulating functions.
@@ -66,8 +67,8 @@ public class Board {
 
     // EFFECTS: Returns a boolean, whether this board is empty.
     public boolean isEmpty() {
-        for (Piece[] row : board){
-            for (Piece piece : row){
+        for (Piece[] row : board) {
+            for (Piece piece : row) {
                 if (!piece.isEmpty()) {
                     return false;
                 }
@@ -78,8 +79,8 @@ public class Board {
 
     // EFFECTS: Returns whether this board is equal to b.
     public boolean equals(Board b) {
-        for (int i = 0;i < 8;i++){
-            for (int j = 0;j < 8;j++){
+        for (int i = 0;i < 8;i++) {
+            for (int j = 0;j < 8;j++) {
                 if (!this.board[i][j].toString().equals(b.board[i][j].toString())) {
                     return false;
                 }
