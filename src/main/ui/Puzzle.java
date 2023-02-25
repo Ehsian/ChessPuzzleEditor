@@ -92,6 +92,7 @@ public class Puzzle {
 
     // REQUIRES: puzzle.size() > 1
     // EFFECTS: handles user input while playing puzzle
+    @SuppressWarnings("methodlength")
     public void runPlayPuzzle() { // Uses MenuC
         int command = -1;
         int step = 1;
