@@ -45,9 +45,15 @@ public class Puzzle {
             displayMenuA();
             command = input.nextInt();
             switch (command) {
-                case 1: runEditPuzzle();
-                case 2: runPlayPuzzle();
-                case 3: runShowPuzzle();
+                case 1:
+                    runEditPuzzle();
+                    break;
+                case 2:
+                    runPlayPuzzle();
+                    break;
+                case 3:
+                    runShowPuzzle();
+                    break;
             }
         }
     }
@@ -62,16 +68,20 @@ public class Puzzle {
             displayMenuB();
             command = input.nextInt();
             switch (command) {
-                case 1: addMove(puzzle);
-                case 2: {
+                case 1:
+                    addMove(puzzle);
+                    break;
+                case 2:
                     if (puzzle.size() == 1) {
                         System.out.println("You cannot undo the first board.");
                         System.out.println("If you wish to remake the starting board please reset the puzzle.");
                         continue;
                     }
                     puzzle.remove(puzzle.size() - 1);
-                }
-                case 3: setupBoard();
+                    break;
+                case 3:
+                    setupBoard();
+                    break;
             }
         }
     }
@@ -104,7 +114,7 @@ public class Puzzle {
             displayMenuC();
             command = input.nextInt();
             switch (command) {
-                case 1: { // Move piece
+                case 1: // Move piece
                     addMove(play);
                     if (play.get(step).equals(puzzle.get(step))) {
                         step++;
@@ -118,11 +128,11 @@ public class Puzzle {
                         System.out.println("You have correctly solved this puzzle! Press enter to continue.");
                         input.nextLine();
                     }
-                }
-                case 2: { // Show answer
+                    break;
+                case 2: // Show answer
                     command = 0;
                     runShowPuzzle();
-                }
+                    break;
             }
         }
     }
@@ -137,20 +147,16 @@ public class Puzzle {
             displayMenuD();
             command = input.nextInt();
             switch (command) {
-                case 1: {
+                case 1:
                     if (step + 1 < puzzle.size()) {
                         step++;
-                    } else {
-                        System.out.println("This is already the final position.");
                     }
-                }
-                case 2: {
+                    break;
+                case 2:
                     if (step - 1 >= 0) {
                         step--;
-                    } else {
-                        System.out.println("This is already the first position.");
                     }
-                }
+                    break;
             }
         }
     }
