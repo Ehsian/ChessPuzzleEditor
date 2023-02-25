@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // Representation of a chess board as a 8x8 2D array of Pieces with board-manipulating functions.
 public class Board {
-    private Piece[][] board;
+    private final Piece[][] board;
 
     // EFFECTS: Creates 8x8 array of empty Pieces.
     public Board() {
