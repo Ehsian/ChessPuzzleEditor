@@ -44,9 +44,9 @@ public class Puzzle {
             displayMenuA();
             command = input.nextInt();
             switch (command){
-                case 1 -> runEditPuzzle();
-                case 2 -> runPlayPuzzle();
-                case 3 -> runShowPuzzle();
+                case 1: runEditPuzzle();
+                case 2: runPlayPuzzle();
+                case 3: runShowPuzzle();
             }
         }
     }
@@ -61,8 +61,8 @@ public class Puzzle {
             displayMenuB();
             command = input.nextInt();
             switch (command){
-                case 1 -> addMove(puzzle);
-                case 2 -> {
+                case 1: addMove(puzzle);
+                case 2: {
                     if (puzzle.size() == 1) {
                         System.out.println("You cannot undo the first board.");
                         System.out.println("If you wish to remake the starting board please reset the puzzle.");
@@ -70,7 +70,7 @@ public class Puzzle {
                     }
                     puzzle.remove(puzzle.size()-1);
                 }
-                case 3 -> setupBoard();
+                case 3: setupBoard();
             }
         }
     }
@@ -98,11 +98,11 @@ public class Puzzle {
         ArrayList<Board> play = new ArrayList<>();
         play.add(puzzle.get(0));
         while (command != 0) {
-            printBoard(step-1);
+            printBoard(0);
             displayMenuC();
             command = input.nextInt();
             switch (command){
-                case 1 -> { // Move piece
+                case 1: { // Move piece
                     addMove(play);
                     if (play.get(step).equals(puzzle.get(step))) {
                         step++;
@@ -116,7 +116,7 @@ public class Puzzle {
                         input.nextLine();
                     }
                 }
-                case 2 -> { // Show answer
+                case 2: { // Show answer
                     command = 0;
                     runShowPuzzle();
                 }
@@ -134,14 +134,14 @@ public class Puzzle {
             displayMenuD();
             command = input.nextInt();
             switch (command) {
-                case 1 -> {
+                case 1: {
                     if (step + 1 < puzzle.size()) {
                         step++;
                     } else {
                         System.out.println("This is already the final position.");
                     }
                 }
-                case 2 -> {
+                case 2: {
                     if (step - 1 >= 0) {
                         step--;
                     } else {

@@ -92,8 +92,8 @@ public class Board {
     // EFFECTS: Returns Piece object representation of character
     private Piece charToPiece(char piece) {
         switch (piece) {
-            case 'P','p','R','r','N','n','B','b','Q','q','K','k':
-                //return new Pawn();
+            case 'P': case 'p': case 'R': case 'r': case 'N': case 'n':
+            case 'B': case 'b': case 'Q': case 'q': case 'K': case 'k':
                 return new Piece(String.valueOf(piece));
             default:
                 return new Piece(); //replace with error handling in future

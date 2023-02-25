@@ -15,7 +15,7 @@ public class Main {
             displayMenu();
             input = scan.nextInt();
             switch (input) {
-                case 1 -> new Puzzle();
+                case 1: new Puzzle();
                 //case 2 -> System.out.println("WIP");
             }
         }
