@@ -10,6 +10,7 @@ public class Puzzle {
 
     ArrayList<Board> puzzle;
     private final Scanner input = new Scanner(System.in);
+    private int step = -1;
 
     public Puzzle() {
         System.out.println("Entering first-board setup...\n");
@@ -102,11 +103,11 @@ public class Puzzle {
     }
 
     // REQUIRES: puzzle.size() > 1
+    // MODIFIES: this
     // EFFECTS: handles user input while playing puzzle
-    @SuppressWarnings("methodlength")
     public void runPlayPuzzle() { // Uses MenuC
         int command = -1;
-        int step = 1;
+        step = 1;
         ArrayList<Board> play = new ArrayList<>();
         play.add(puzzle.get(0));
         while (command != 0) {
@@ -115,18 +116,9 @@ public class Puzzle {
             command = input.nextInt();
             switch (command) {
                 case 1: // Move piece
-                    addMove(play);
-                    if (play.get(step).equals(puzzle.get(step))) {
-                        step++;
-                    } else {
-                        System.out.println("Incorrect! ");
-                        play.remove(play.size() - 1);
-                    }
+                    movePiece(play);
                     if (step >= puzzle.size()) {
                         command = 0;
-                        printBoard(step - 1);
-                        System.out.println("You have correctly solved this puzzle! Press enter to continue.");
-                        input.nextLine();
                     }
                     break;
                 case 2: // Show answer
@@ -138,10 +130,29 @@ public class Puzzle {
     }
 
     // REQUIRES: puzzle.size() > 1
+    // MODIFIES: this
+    // EFFECTS: Processes current attempt to solve puzzle
+    private void movePiece(ArrayList<Board> play) {
+        addMove(play);
+        if (play.get(step).equals(puzzle.get(step))) {
+            step++;
+        } else {
+            System.out.println("Incorrect! ");
+            play.remove(play.size() - 1);
+        }
+        if (step >= puzzle.size()) {
+            printBoard(step - 1);
+            System.out.println("You have correctly solved this puzzle! Press enter to continue.");
+            input.nextLine();
+        }
+    }
+
+    // REQUIRES: puzzle.size() > 1
+    // MODIFIES: this
     // EFFECTS: Process input to display next and previous move of puzzle.
     public void runShowPuzzle() { // Uses MenuD
         int command = -1;
-        int step = 0;
+        step = 0;
         while (command != 0) {
             printBoard(step);
             displayMenuD();
