@@ -27,6 +27,9 @@ public class Board {
         }
     }
 
+    // TODO: Constructor that consumes String[][], converts to Piece[][],
+    //       and sets board to result (Easier storing & writing data for Phase 2)
+
     // EFFECTS: Returns this board as its array of pieces. (piece map)
     public Piece[][] getBoard() {
         return this.board;
@@ -41,7 +44,7 @@ public class Board {
         board[getY(y)][getX(x)] = charToPiece(piece);
     }
 
-    // REQUIRES: Piece exists at (x1,y1) & it is valid for piece at (x1,y1) to move to (x2,y2)
+    // REQUIRES: Piece exists at (x1,y1) and it is valid for piece at (x1,y1) to move to (x2,y2)
     // MODIFIES: this
     // EFFECTS: Moves piece at (x1,y1) to (x2,y2). Replaces existing piece on (x2,y2). Returns resulting board.
     public Board movePiece(char x1, int y1, char x2, int y2) {
@@ -113,7 +116,7 @@ public class Board {
             case 'f': return 5;
             case 'g': return 6;
             case 'h': return 7;
-            default: return -1; //switch with error handling in future
+            default: return 0; //switch with error handling in future
         }
     }
 
