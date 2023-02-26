@@ -5,23 +5,25 @@
 This application is a puzzle creator & custom board editor for the classic game of chess on an
 8x8 board. This application will feature two major functions; making a custom position
 on an 8x8 chess board (through drag and dropping chess pieces), and adding intended custom moves
-on that custom chess board to create a "solution" to the puzzle/board that you created.
+on that custom chess board to create a "solution" to the puzzle that you created.
 
-This project is of interest to me because I've always enjoyed playing chess,
-and I've always been intrigued by how chess engines worked. I have an additional
-interest in chess applications, since I have grown up alongside a major 
-chess movement in software. Apps such as *Chess Titans* on Windows XP and the original
-*Chess Free* app for IOS and Android will always be remembered as 
-parts of my childhood. 
+This project is of interest to me because I've always enjoyed playing chess, but within chess,
+I enjoyed completing chess puzzles the most. I feel like chess puzzles are a good way to learn 
+how to find the best moves in a real game of chess. More importantly, I like the problem-solving
+nature of solving chess puzzles. Lately, the only thing that connects me to chess are
+solving daily chess puzzles on various websites. My goal for this project is to create something similar,
+except unlike those websites, I would like users to be able to create more "custom" puzzles for
+themselves and friends to use.
 
 
 ## User Stories:
-- As a user, I want to be able to add chess pieces to my chess board
-- As a user, I want to be able to view the chess pieces I placed on my chess board
-- As a user, I want to be able to move a chess piece on my chess board
-- As a user, I want to be able to save a list of moves on a custom chess board as a "puzzle"
-- As a user, I want to be able to load a "puzzle" and attempt to solve it
-- As a user, I want to be able to show the answer to a puzzle.
+- As a user, I want to be able to add chess pieces to my chess board [Phase 1 Done]
+- As a user, I want to be able to view the chess pieces I placed on my chess board [Phase 1 Done]
+- As a user, I want to be able to move a chess piece on my chess board [Phase 1 Done]
+- As a user, I want to be able to save a list of moves on a custom chess board as a "puzzle" [Phase 1 Done]
+- As a user, I want to be able to add and remove custom moves to a "puzzle" [Phase 1 Done]
+- As a user, I want to be able to load a "puzzle" and attempt to solve it [Phase 1 Done]
+- As a user, I want to be able to show the answer to a puzzle. [Phase 1 Done]
 
 
 
