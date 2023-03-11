@@ -24,6 +24,8 @@ themselves and friends to use.
 - As a user, I want to be able to add and remove custom moves to a "puzzle" [Phase 1 Done]
 - As a user, I want to be able to load a "puzzle" and attempt to solve it [Phase 1 Done]
 - As a user, I want to be able to show the answer to a puzzle. [Phase 1 Done]
+- As a user, I want to be able to save my current "puzzle" on demand.
+- As a user, I want to be able to load a previous "puzzle" on startup.
 
 
 
@@ -41,3 +43,9 @@ E.g. Starting position (Uppercase is White, Lowercase is Black)
 [" ", " ", " ", " ", " ", " ", " ", " "]</br>
 ["P", "P", "P", "P", "P", "P", "P", "P"]</br>
 ["R", "N", "B", "Q", "K", "B", "N", "R"]
+
+Can save data as a list of long strings of piece positions rather than the 2D boards themselves
+Will only require one JSONArray of Strings. Minor helper/private functions will be needed.
+E.g. K01k71Q23q35...
+Have a for loop on save/load to convert data to that string or that string to data
+On load: Using position string rebuild the puzzle for each item in the JSONArray

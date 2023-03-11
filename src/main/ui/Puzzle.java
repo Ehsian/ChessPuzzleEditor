@@ -1,6 +1,8 @@
 package ui;
 
 import model.Board;
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,10 +14,22 @@ public class Puzzle {
     private final Scanner input = new Scanner(System.in);
     private int step = -1;
 
+    // Default constructor for building new puzzle
     public Puzzle() {
         System.out.println("Entering first-board setup...\n");
         setupBoard();
         runPuzzle();
+    }
+
+    // Loading in a puzzle
+    public Puzzle(ArrayList<Board> puzzle) {
+        this.puzzle = puzzle;
+        runPuzzle();
+    }
+
+    // For testing saving & loading (Does not start interface)
+    public Puzzle(ArrayList<Board> puzzle, boolean test) {
+        this.puzzle = puzzle;
     }
 
     // MODIFIES: this
@@ -41,6 +55,7 @@ public class Puzzle {
     // MODIFIES: this
     // EFFECTS: handles user input while selecting puzzle operation
     public void runPuzzle() { // Uses MenuA
+        Main.puzzle = this;
         int command = -1;
         while (command != 0) {
             displayMenuA();
@@ -50,6 +65,10 @@ public class Puzzle {
                     runEditPuzzle();
                     break;
                 case 2:
+                    if (puzzle.size() < 2) {
+                        System.out.println("Please add a move to the puzzle first.");
+                        break;
+                    }
                     runPlayPuzzle();
                     break;
                 case 3:
@@ -171,6 +190,16 @@ public class Puzzle {
             }
         }
     }
+
+    // EFFECTS: Returns this Puzzle as JSONArray of boards
+    public JSONArray toJson() {
+        JSONArray puzzle = new JSONArray();
+        for (Board board : this.puzzle) {
+            puzzle.put(board.toJson());
+        }
+        return puzzle;
+    }
+
 
     // EFFECTS: Prints board at step (step is index)
     private void printBoard(int step) {

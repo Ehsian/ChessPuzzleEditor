@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 import java.util.Arrays;
 
 // Representation of a chess board as a 8x8 2D array of Pieces with board-manipulating functions.
@@ -27,9 +29,6 @@ public class Board {
         }
     }
 
-    // TODO: Constructor that consumes String[][], converts to Piece[][],
-    //       and sets board to result (Easier storing & writing data for Phase 2)
-
     // EFFECTS: Returns this board as its array of pieces. (piece map)
     public Piece[][] getBoard() {
         return this.board;
@@ -42,6 +41,15 @@ public class Board {
     // EFFECTS: Sets the piece at the input coordinates to input piece.
     public void setPiece(char piece, char x, int y) {
         board[getY(y)][getX(x)] = charToPiece(piece);
+    }
+
+    // REQUIRES: piece represents a valid piece's character,
+    //           i is valid row on 2D Piece array
+    //           j is valid column on 2D Piece array
+    // MODIFIES: this
+    // EFFECTS: Sets the piece at the input coordinates to input piece.
+    public void setPiece(char piece, int i, int j) {
+        board[i][j] = charToPiece(piece);
     }
 
     // REQUIRES: Piece exists at (x1,y1) and it is valid for piece at (x1,y1) to move to (x2,y2)
@@ -124,5 +132,41 @@ public class Board {
     // EFFECTS: Returns an indexed interpretation of the chess board y-coordinate
     private int getY(int y) {
         return Math.abs(7 - (y - 1));
+    }
+
+    // EFFECTS: Returns this board as a string of pieces with their coordinates.
+    private String boardToString() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (!board[i][j].isEmpty()) {
+                    str.append(board[i][j].toString());
+                    str.append(i);
+                    str.append(j);
+                }
+            }
+        }
+        return str.toString();
+    }
+
+    // EFFECTS: Returns this board as a JSONObject
+    public JSONObject toJson() {
+        JSONObject jsonBoard = new JSONObject();
+        jsonBoard.put("Board",boardToString());
+        return jsonBoard;
+    }
+
+    // REQUIRES: str is a valid and acceptable data string
+    // MODIFIES: this
+    // EFFECTS: Sets pieces on this board as saved in str. Returns this.
+    public Board stringToBoard(String str) {
+        // Note that piece coordinates come in bundles of 3 characters long
+        for (int i = 0; i < str.length(); i += 3) {
+            char piece = str.charAt(i);
+            int row = Integer.parseInt(str.substring(i + 1, i + 2));
+            int column = Integer.parseInt(str.substring(i + 2, i + 3));
+            setPiece(piece,row,column);
+        }
+        return this;
     }
 }
