@@ -1,4 +1,4 @@
-package ui;
+package ui.tui;
 
 import model.Board;
 import org.json.JSONArray;

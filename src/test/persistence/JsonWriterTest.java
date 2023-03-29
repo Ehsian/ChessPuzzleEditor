@@ -2,7 +2,7 @@ package persistence;
 
 import model.Board;
 import org.junit.jupiter.api.Test;
-import ui.Puzzle;
+import ui.tui.Puzzle;
 
 import java.io.IOException;
 import java.util.ArrayList;

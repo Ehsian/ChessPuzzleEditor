@@ -1,11 +1,9 @@
-package ui;
+package ui.tui;
 
-import org.json.JSONWriter;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

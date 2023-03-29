@@ -1,8 +1,8 @@
 package persistence;
 
 import org.json.JSONArray;
-import org.json.JSONWriter;
-import ui.Puzzle;
+import ui.gui.PuzzleGUI;
+import ui.tui.Puzzle;
 
 import java.io.*;
 
@@ -24,6 +24,13 @@ public class JsonWriter {
     // MODIFIES: this
     // EFFECTS: Write JSON representation of Puzzle to file
     public void write(Puzzle puzzle) throws NullPointerException {
+        JSONArray data = puzzle.toJson();
+        writer.print(data);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Write JSON representation of Puzzle (GUI Representation) to file
+    public void write(PuzzleGUI puzzle) throws NullPointerException {
         JSONArray data = puzzle.toJson();
         writer.print(data);
     }

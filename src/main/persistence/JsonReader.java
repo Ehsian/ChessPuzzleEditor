@@ -1,8 +1,6 @@
 package persistence;
 
 import model.Board;
-import model.Piece;
-import ui.Puzzle;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
