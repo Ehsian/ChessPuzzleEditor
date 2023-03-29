@@ -41,10 +41,17 @@ public class PuzzleGUI extends JFrame {
 
     // Loading in a puzzle
     public PuzzleGUI(ArrayList<Board> puzzle) {
+        super("Loaded Puzzle:");
+        initializeGraphics();
         this.puzzle = puzzle;
         runPuzzle();
         setVisible(false);
         dispose();
+    }
+
+    // Constructor for loading test
+    public PuzzleGUI(ArrayList<Board> puzzle, boolean test) {
+        this.puzzle = puzzle;
     }
 
     // MODIFIES: this

@@ -28,6 +28,23 @@ themselves and friends to use.
 - As a user, I want to be able to load a previous "puzzle" on startup.
 
 
+## Instructions for Grader:
+1. Run MainGUI.main()
+2. Press "New Puzzle"
+3. Complete startup config (E.g. Input ke1)
+4. Once board is not empty, input "0" to end config
+5. Input "1" to edit the puzzle, (add/remove moves). 
+This should cover both instances of actions related to adding/removing Xs to a Y.
+   (Adding/removing boards to a puzzle)
+6. Note: Initial board setup should also satisfy adding/removing Xs to a Y
+   (Adding/removing pieces to a board)
+
+Images are available under the CC0 (creative commons) license
+taken from wikimedia commons.
+
+Link to images: https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+
+
 
   
 ### Sidenotes/Additional Ideas

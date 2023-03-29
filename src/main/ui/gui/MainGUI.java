@@ -5,8 +5,6 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -91,13 +89,10 @@ public class MainGUI extends JFrame {
     // EFFECTS: Returns a button that exits the program on click.
     private JButton exitButton() {
         JButton exit = new JButton("Exit");
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Thanks for playing!");
-                setVisible(false);
-                dispose();
-            }
+        exit.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Thanks for playing!");
+            setVisible(false);
+            dispose();
         });
         return exit;
     }
@@ -105,13 +100,10 @@ public class MainGUI extends JFrame {
     // EFFECTS: Returns a button that creates a new puzzle on click.
     private JButton newButton() {
         JButton newPuzzle = new JButton("New Puzzle");
-        newPuzzle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new PuzzleGUI();
-                setVisible(true);
-            }
+        newPuzzle.addActionListener(e -> {
+            setVisible(false);
+            new PuzzleGUI();
+            setVisible(true);
         });
         return newPuzzle;
     }
@@ -119,24 +111,16 @@ public class MainGUI extends JFrame {
     // EFFECTS: Returns a button that saves the current puzzle on click.
     private JButton saveButton() {
         JButton savePuzzle = new JButton("Save Current Puzzle");
-        savePuzzle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                savePuzzle(puzzle);
-            }
-        });
+        savePuzzle.addActionListener(e -> savePuzzle(puzzle));
         return savePuzzle;
     }
 
     // EFFECTS: Returns a button that prompts the user for a file location to load a puzzle from.
     private JButton loadButton() {
         JButton loadPuzzle = new JButton("Load Puzzle");
-        loadPuzzle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String location = JOptionPane.showInputDialog("File Name to Load:");
-                loadPuzzle(location);
-            }
+        loadPuzzle.addActionListener(e -> {
+            String location = JOptionPane.showInputDialog("File Name to Load:");
+            loadPuzzle(location);
         });
         return loadPuzzle;
     }

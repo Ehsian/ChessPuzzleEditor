@@ -2,6 +2,7 @@ package persistence;
 
 import model.Board;
 import org.junit.jupiter.api.Test;
+import ui.gui.PuzzleGUI;
 import ui.tui.Puzzle;
 
 import java.io.IOException;
@@ -50,6 +51,32 @@ public class JsonWriterTest {
             boards.add(board1);
             boards.add(board2);
             Puzzle puzzle = new Puzzle(boards, true);
+            JsonWriter writer = new JsonWriter("testWriterGeneralPuzzle.json");
+            writer.open();
+            writer.write(puzzle);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterGeneralPuzzle.json");
+            ArrayList<Board> loadedPuzzle = reader.readPuzzle();
+            assertEquals(loadedPuzzle.size(),2);
+            assertTrue(loadedPuzzle.get(0).equals(board1));
+            assertTrue(loadedPuzzle.get(1).equals(board2));
+        } catch (IOException e) {
+            fail("No exception should have been thrown.");
+        }
+    }
+
+    @Test
+    void testWriterGUIPuzzle() {
+        try {
+            Board board1 = new Board();
+            board1.setPiece('K', 7, 4);
+            Board board2 = new Board();
+            board2.setPiece('K', 6, 4);
+            ArrayList<Board>boards = new ArrayList<>();
+            boards.add(board1);
+            boards.add(board2);
+            PuzzleGUI puzzle = new PuzzleGUI(boards, true);
             JsonWriter writer = new JsonWriter("testWriterGeneralPuzzle.json");
             writer.open();
             writer.write(puzzle);
