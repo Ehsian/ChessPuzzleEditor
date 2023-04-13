@@ -41,6 +41,7 @@ public class Board {
     // EFFECTS: Sets the piece at the input coordinates to input piece.
     public void setPiece(char piece, char x, int y) {
         board[getY(y)][getX(x)] = charToPiece(piece);
+        EventLog.getInstance().logEvent(new Event("A Piece has been set on a board."));
     }
 
     // REQUIRES: piece represents a valid piece's character,
@@ -50,6 +51,7 @@ public class Board {
     // EFFECTS: Sets the piece at the input coordinates to input piece.
     public void setPiece(char piece, int i, int j) {
         board[i][j] = charToPiece(piece);
+        EventLog.getInstance().logEvent(new Event("A Piece has been set on a board."));
     }
 
     // REQUIRES: Piece exists at (x1,y1) and it is valid for piece at (x1,y1) to move to (x2,y2)
@@ -61,7 +63,7 @@ public class Board {
 
         board[getY(y1)][getX(x1)] = new Piece();
         board[getY(y2)][getX(x2)] = from;
-
+        EventLog.getInstance().logEvent(new Event("A Piece has been moved on a board."));
         return this;
     }
 

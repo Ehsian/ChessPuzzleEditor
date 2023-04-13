@@ -44,25 +44,11 @@ taken from wikimedia commons.
 
 Link to images: https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
 
+**Phase 4: Task 2**
 
-
-  
-### Sidenotes/Additional Ideas
-Boards/positions may potentially be a 2D array of Strings or custom Objects.
-
-E.g. Starting position (Uppercase is White, Lowercase is Black)
-
-["r", "n", "b", "q", "k", "b", "n", "r"]</br>
-["p", "p", "p", "p", "p", "p", "p", "p"]</br>
-[" ", " ", " ", " ", " ", " ", " ", " "]</br>
-[" ", " ", " ", " ", " ", " ", " ", " "]</br>
-[" ", " ", " ", " ", " ", " ", " ", " "]</br>
-[" ", " ", " ", " ", " ", " ", " ", " "]</br>
-["P", "P", "P", "P", "P", "P", "P", "P"]</br>
-["R", "N", "B", "Q", "K", "B", "N", "R"]
-
-Can save data as a list of long strings of piece positions rather than the 2D boards themselves
-Will only require one JSONArray of Strings. Minor helper/private functions will be needed.
-E.g. K01k71Q23q35...
-Have a for loop on save/load to convert data to that string or that string to data
-On load: Using position string rebuild the puzzle for each item in the JSONArray
+Tue Apr 11 22:43:28 PDT 2023
+A Piece has been set on a board.
+Tue Apr 11 22:43:36 PDT 2023
+A Piece has been set on a board.
+Tue Apr 11 22:43:48 PDT 2023
+A Piece has been moved on a board.

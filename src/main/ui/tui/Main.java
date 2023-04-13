@@ -1,5 +1,7 @@
 package ui.tui;
 
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -33,6 +35,10 @@ public class Main {
                     loadPuzzle();
                     break;
             }
+        }
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDate());
+            System.out.println(event.getDescription());
         }
     }
 

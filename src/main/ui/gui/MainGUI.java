@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -93,6 +95,10 @@ public class MainGUI extends JFrame {
             JOptionPane.showMessageDialog(null, "Thanks for playing!");
             setVisible(false);
             dispose();
+            for (Event event : EventLog.getInstance()) {
+                System.out.println(event.getDate());
+                System.out.println(event.getDescription());
+            }
         });
         return exit;
     }
