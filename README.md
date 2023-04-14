@@ -52,3 +52,17 @@ Tue Apr 11 22:43:36 PDT 2023
 A Piece has been set on a board.
 Tue Apr 11 22:43:48 PDT 2023
 A Piece has been moved on a board.
+
+
+**Phase 4: Task 3**
+
+Reflecting upon my UML diagram, I believe that my current design's biggest strong point is its simplicity.
+However, as I was designing the class structure in phases 1 and 2, I intentionally chose simplicity, sacrificing
+scalability. If I were given more time, I would have liked to add many more features. However, due to the way I
+designed the class structure, designing new features would be messier and potentially more time-consuming. I
+believe that I put too much functionality into the classes in the "ui" package. Though I don't believe I broke any
+important design rules, I do believe there is a way to move most of the functionality from the 
+"Puzzle" and "PuzzleGUI" classes into classes that would work in the "model" package. (For example, functions
+in the "Puzzle" and "PuzzleGUI" classes such as "addMove" would still work if there is a model class for puzzles)
+This would improve scalability. I believe it would be better for the UI classes' sole purpose was to display
+a working UI, with all functionality in the model.
